@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "consulta";
+option java_outer_classname = "ConsultaProto";
+option objc_class_prefix = "CP";
+
+package consulta;
+
+// Servico para consulta de dados.
+service Consultador {
+  //faz uma consulta nos servidores de armazenamento
+  rpc consulta (ConsultaRequest) returns (ConsultaReply) {}
+
+  //termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+  rpc termino (TerminoRequest) returns (TerminoReply) {}
+}
+
+//mensagens de request e reply para o procedimento consulta
+message ConsultaRequest{
+  int32 ch = 1;
+}
+message ConsultaReply{
+  string nome = 1;
+  int32 matr = 2;
+  string curso = 3;
+  int32 cred = 4;
+}
+
+//mensagens de request e reply para o procedimento termino
+message TerminoRequest{
+
+}
+message TerminoReply{
+  int32 retorno = 1;
+}

@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ident";
+option java_outer_classname = "IdentProto";
+option objc_class_prefix = "CP";
+
+package ident;
+
+// Servico para consulta de dados.
+service Identificador {
+  //faz uma consulta nos servidores de armazenamento
+  rpc autenticacao (AuthRequest) returns (AuthReply) {}
+  
+  //faz uma consulta nos servidores de armazenamento
+  rpc criacao (CreateRequest) returns (CreateReply) {}
+  
+  //faz uma consulta nos servidores de armazenamento
+  rpc acesso (AccessRequest) returns (AccessReply) {}
+
+  //termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+  rpc termino (TerminoRequest) returns (TerminoReply) {}
+}
+
+//mensagens de request e reply para o procedimento consulta
+message AuthRequest{
+  string identificacao = 1;
+  int32 senha = 2;
+}
+message AuthReply{
+  int32 retorno = 2;
+  repeated bytes vetor  = 3;
+}
+
+message CreateRequest{
+  string identificacao = 1;
+  int32 senha = 2;
+  string permissao = 3;
+  repeated bytes vetor  = 4;
+}
+message CreateReply{
+  int32 retorno = 2;
+}
+
+message AccessRequest{
+  repeated bytes vetor  = 4;
+}
+message AccessReply{
+  string permissao = 3;
+}
+
+//mensagens de request e reply para o procedimento termino
+message TerminoRequest{
+
+}
+message TerminoReply{
+  int32 retorno = 1;
+}

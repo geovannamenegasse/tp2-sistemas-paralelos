@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "armazenamento";
+option java_outer_classname = "ArmazenamentoProto";
+option objc_class_prefix = "AP";
+
+package armazenamento;
+
+// Servico para armazenamento de dados.
+service Armazem {
+  //insere um item no armazem
+  rpc insercao (InsercaoRequest) returns (InsercaoReply) {}
+
+  //faz uma consulta dos itens inseridos
+  rpc consulta (ConsultaRequest) returns (ConsultaReply) {}
+
+  //termina o servidor
+  rpc termino (TerminoRequest) returns (TerminoReply) {}
+}
+
+//mensagens de request e reply para o procedimento insercao
+message InsercaoRequest{
+  int32 ch = 1;
+  string desc = 2;
+  int32 val = 3;
+}
+message InsercaoReply{
+  int32 retorno = 1;
+}
+
+//mensagens de request e reply para o procedimento consulta
+message ConsultaRequest{
+  int32 ch = 1;
+}
+message ConsultaReply{
+  string desc = 1;
+  int32 val = 2;
+}
+
+//mensagens de request e reply para o procedimento termino
+message TerminoRequest{
+
+}
+message TerminoReply{
+  int32 retorno = 1;
+}
