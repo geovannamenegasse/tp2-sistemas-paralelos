@@ -35,6 +35,7 @@ if __name__ == '__main__':
                     print(response.retorno)
                     if response.retorno == 0:
                         vetor_atual = response.vetor
+                    print(vetor_atual)
 
                 if entrada[0] == "F": # comando para parar o servidor
                     response = stub2.termino(ident_pb2.TerminoRequest())

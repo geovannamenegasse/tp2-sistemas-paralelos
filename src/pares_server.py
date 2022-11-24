@@ -13,11 +13,13 @@ from concurrent import futures
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))# crio servidor
 
 class Pares(pares_pb2_grpc.ArmazenamentoServicer):#classe responsavel pelo armazenamento feito no servidor
+    stub = ident_pb2_grpc.IdentificadorStub(grpc.insecure_channel(sys.argv[2]))
+    
     itens = {}#dicionario que ira armazenar os dados inseridos no servidor. Cada dado e armazenado no formato: (descricao, valor)
 
     def insercao (self, request, context):#procedimento de insercao a ser exportado
         print(request)       
-        # print(ident_pb2_grpc.acesso(ident_pb2.AccessRequest(vetor=[]))) 
+        print(self.stub.acesso(ident_pb2.AccessRequest(vetor=[]))) 
         return pares_pb2.InsertReply(retorno=0)
 
     def consulta (self, request, context):#procedimento de consulta a ser exportado
