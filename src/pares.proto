@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "pares";
+option java_outer_classname = "ParesProto";
+option objc_class_prefix = "CP";
+
+package pares;
+
+// Servico para consulta de dados.
+service Armazenamento {
+  //faz uma consulta nos servidores de armazenamento
+  rpc insercao (InsertRequest) returns (InsertReply) {}
+  
+  //faz uma consulta nos servidores de armazenamento
+  rpc consulta (SearchRequest) returns (SearchReply) {}
+
+  //termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+  rpc termino (TerminoRequest) returns (TerminoReply) {}
+}
+
+//mensagens de request e reply para o procedimento consulta
+message InsertRequest{
+  int32 chave = 2;
+  string valor = 1;
+  repeated bytes vetor = 3;
+}
+message InsertReply{
+  int32 retorno = 2;
+}
+
+message SearchRequest{
+  int32 chave = 2;
+  repeated bytes vetor  = 4;
+}
+message SearchReply{
+  string valor = 2;
+}
+
+//mensagens de request e reply para o procedimento termino
+message TerminoRequest{
+
+}
+message TerminoReply{
+  int32 retorno = 1;
+}
