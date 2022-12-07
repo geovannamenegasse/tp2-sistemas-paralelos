@@ -16,4 +16,3 @@ run_cli_pares:
 
 clean:
 	rm -f *pb2*
-	rm -r __pycache__
