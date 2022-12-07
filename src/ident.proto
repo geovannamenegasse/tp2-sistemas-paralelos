@@ -7,52 +7,58 @@ option objc_class_prefix = "CP";
 
 package ident;
 
-// Servico para consulta de dados.
-service Identificador {
-  //faz uma consulta nos servidores de armazenamento
+// Servico para autenticacao e controle de acesso
+service Identidades {
+  //faz a autenticacao de um usuario no servidor de identidades
   rpc autenticacao (AuthRequest) returns (AuthReply) {}
   
-  //faz uma consulta nos servidores de armazenamento
+  //faz a insercao de um usuario no servidor de identidades
   rpc criacao (CreateRequest) returns (CreateReply) {}
   
-  //faz uma consulta nos servidores de armazenamento
+  //verifica as permissoes de um usuario no servidor de identidades
   rpc acesso (AccessRequest) returns (AccessReply) {}
 
-  //termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+  //termina a conexao com os servidores de identidades
   rpc termino (TerminoRequest) returns (TerminoReply) {}
 }
 
-//mensagens de request e reply para o procedimento consulta
-message AuthRequest{
+
+//mensagens de request e reply para o procedimento autenticacao
+message AuthRequest {
   string identificacao = 1;
   int32 senha = 2;
 }
-message AuthReply{
-  int32 retorno = 2;
-  repeated bytes vetor  = 3;
+
+message AuthReply {
+  int32 retorno = 1;
+  repeated bytes vetor  = 2;
 }
 
-message CreateRequest{
+//mensagens de request e reply para o procedimento criacao
+message CreateRequest {
   string identificacao = 1;
   int32 senha = 2;
   string permissao = 3;
   repeated bytes vetor  = 4;
 }
-message CreateReply{
-  int32 retorno = 2;
+message CreateReply {
+  int32 retorno = 1;
 }
 
-message AccessRequest{
-  repeated bytes vetor  = 4;
+//mensagens de request e reply para o procedimento acesso
+message AccessRequest {
+  repeated bytes vetor = 1;
 }
-message AccessReply{
-  string permissao = 3;
+
+message AccessReply {
+  string permissao = 1;
 }
 
 //mensagens de request e reply para o procedimento termino
-message TerminoRequest{
+message TerminoRequest {
 
 }
-message TerminoReply{
+
+message TerminoReply {
   int32 retorno = 1;
 }

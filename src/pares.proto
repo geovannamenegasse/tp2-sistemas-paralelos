@@ -7,40 +7,43 @@ option objc_class_prefix = "CP";
 
 package pares;
 
-// Servico para consulta de dados.
-service Armazenamento {
-  //faz uma consulta nos servidores de armazenamento
+// Servico para armazenamento
+service Pares {
+  //faz uma insercao de um par no servidor
   rpc insercao (InsertRequest) returns (InsertReply) {}
   
-  //faz uma consulta nos servidores de armazenamento
+  //faz uma consulta por um par no servidor
   rpc consulta (SearchRequest) returns (SearchReply) {}
 
-  //termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+  //termina a conexao com os servidores de pares
   rpc termino (TerminoRequest) returns (TerminoReply) {}
 }
 
-//mensagens de request e reply para o procedimento consulta
-message InsertRequest{
-  int32 chave = 2;
-  string valor = 1;
+//mensagens de request e reply para o procedimento insercao
+message InsertRequest {
+  int32 chave = 1;
+  string valor = 2;
   repeated bytes vetor = 3;
 }
-message InsertReply{
-  int32 retorno = 2;
+
+message InsertReply {
+  int32 retorno = 1;
 }
 
-message SearchRequest{
-  int32 chave = 2;
-  repeated bytes vetor  = 4;
+//mensagens de request e reply para o procedimento consulta
+message SearchRequest {
+  int32 chave = 1;
+  repeated bytes vetor  = 2;
 }
-message SearchReply{
-  string valor = 2;
+message SearchReply {
+  string valor = 1;
 }
 
 //mensagens de request e reply para o procedimento termino
-message TerminoRequest{
+message TerminoRequest {
 
-}
-message TerminoReply{
+} 
+
+message TerminoReply {
   int32 retorno = 1;
 }

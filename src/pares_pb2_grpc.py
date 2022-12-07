@@ -5,8 +5,8 @@ import grpc
 import pares_pb2 as pares__pb2
 
 
-class ArmazenamentoStub(object):
-    """Servico para consulta de dados.
+class ParesStub(object):
+    """Servico para armazenamento
     """
 
     def __init__(self, channel):
@@ -16,49 +16,49 @@ class ArmazenamentoStub(object):
             channel: A grpc.Channel.
         """
         self.insercao = channel.unary_unary(
-                '/pares.Armazenamento/insercao',
+                '/pares.Pares/insercao',
                 request_serializer=pares__pb2.InsertRequest.SerializeToString,
                 response_deserializer=pares__pb2.InsertReply.FromString,
                 )
         self.consulta = channel.unary_unary(
-                '/pares.Armazenamento/consulta',
+                '/pares.Pares/consulta',
                 request_serializer=pares__pb2.SearchRequest.SerializeToString,
                 response_deserializer=pares__pb2.SearchReply.FromString,
                 )
         self.termino = channel.unary_unary(
-                '/pares.Armazenamento/termino',
+                '/pares.Pares/termino',
                 request_serializer=pares__pb2.TerminoRequest.SerializeToString,
                 response_deserializer=pares__pb2.TerminoReply.FromString,
                 )
 
 
-class ArmazenamentoServicer(object):
-    """Servico para consulta de dados.
+class ParesServicer(object):
+    """Servico para armazenamento
     """
 
     def insercao(self, request, context):
-        """faz uma consulta nos servidores de armazenamento
+        """faz uma insercao de um par no servidor
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def consulta(self, request, context):
-        """faz uma consulta nos servidores de armazenamento
+        """faz uma consulta por um par no servidor
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def termino(self, request, context):
-        """termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+        """termina a conexao com os servidores de pares
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ArmazenamentoServicer_to_server(servicer, server):
+def add_ParesServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'insercao': grpc.unary_unary_rpc_method_handler(
                     servicer.insercao,
@@ -77,13 +77,13 @@ def add_ArmazenamentoServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'pares.Armazenamento', rpc_method_handlers)
+            'pares.Pares', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Armazenamento(object):
-    """Servico para consulta de dados.
+class Pares(object):
+    """Servico para armazenamento
     """
 
     @staticmethod
@@ -97,7 +97,7 @@ class Armazenamento(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pares.Armazenamento/insercao',
+        return grpc.experimental.unary_unary(request, target, '/pares.Pares/insercao',
             pares__pb2.InsertRequest.SerializeToString,
             pares__pb2.InsertReply.FromString,
             options, channel_credentials,
@@ -114,7 +114,7 @@ class Armazenamento(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pares.Armazenamento/consulta',
+        return grpc.experimental.unary_unary(request, target, '/pares.Pares/consulta',
             pares__pb2.SearchRequest.SerializeToString,
             pares__pb2.SearchReply.FromString,
             options, channel_credentials,
@@ -131,7 +131,7 @@ class Armazenamento(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pares.Armazenamento/termino',
+        return grpc.experimental.unary_unary(request, target, '/pares.Pares/termino',
             pares__pb2.TerminoRequest.SerializeToString,
             pares__pb2.TerminoReply.FromString,
             options, channel_credentials,

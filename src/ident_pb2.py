@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bident.proto\x12\x05ident\"3\n\x0b\x41uthRequest\x12\x15\n\ridentificacao\x18\x01 \x01(\t\x12\r\n\x05senha\x18\x02 \x01(\x05\"+\n\tAuthReply\x12\x0f\n\x07retorno\x18\x02 \x01(\x05\x12\r\n\x05vetor\x18\x03 \x03(\x0c\"W\n\rCreateRequest\x12\x15\n\ridentificacao\x18\x01 \x01(\t\x12\r\n\x05senha\x18\x02 \x01(\x05\x12\x11\n\tpermissao\x18\x03 \x01(\t\x12\r\n\x05vetor\x18\x04 \x03(\x0c\"\x1e\n\x0b\x43reateReply\x12\x0f\n\x07retorno\x18\x02 \x01(\x05\"\x1e\n\rAccessRequest\x12\r\n\x05vetor\x18\x04 \x03(\x0c\" \n\x0b\x41\x63\x63\x65ssReply\x12\x11\n\tpermissao\x18\x03 \x01(\t\"\x10\n\x0eTerminoRequest\"\x1f\n\x0cTerminoReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\x32\xed\x01\n\rIdentificador\x12\x36\n\x0c\x61utenticacao\x12\x12.ident.AuthRequest\x1a\x10.ident.AuthReply\"\x00\x12\x35\n\x07\x63riacao\x12\x14.ident.CreateRequest\x1a\x12.ident.CreateReply\"\x00\x12\x34\n\x06\x61\x63\x65sso\x12\x14.ident.AccessRequest\x1a\x12.ident.AccessReply\"\x00\x12\x37\n\x07termino\x12\x15.ident.TerminoRequest\x1a\x13.ident.TerminoReply\"\x00\x42\x1a\n\x05identB\nIdentProtoP\x01\xa2\x02\x02\x43Pb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bident.proto\x12\x05ident\"3\n\x0b\x41uthRequest\x12\x15\n\ridentificacao\x18\x01 \x01(\t\x12\r\n\x05senha\x18\x02 \x01(\x05\"+\n\tAuthReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\x12\r\n\x05vetor\x18\x02 \x03(\x0c\"W\n\rCreateRequest\x12\x15\n\ridentificacao\x18\x01 \x01(\t\x12\r\n\x05senha\x18\x02 \x01(\x05\x12\x11\n\tpermissao\x18\x03 \x01(\t\x12\r\n\x05vetor\x18\x04 \x03(\x0c\"\x1e\n\x0b\x43reateReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\"\x1e\n\rAccessRequest\x12\r\n\x05vetor\x18\x01 \x03(\x0c\" \n\x0b\x41\x63\x63\x65ssReply\x12\x11\n\tpermissao\x18\x01 \x01(\t\"\x10\n\x0eTerminoRequest\"\x1f\n\x0cTerminoReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\x32\xeb\x01\n\x0bIdentidades\x12\x36\n\x0c\x61utenticacao\x12\x12.ident.AuthRequest\x1a\x10.ident.AuthReply\"\x00\x12\x35\n\x07\x63riacao\x12\x14.ident.CreateRequest\x1a\x12.ident.CreateReply\"\x00\x12\x34\n\x06\x61\x63\x65sso\x12\x14.ident.AccessRequest\x1a\x12.ident.AccessReply\"\x00\x12\x37\n\x07termino\x12\x15.ident.TerminoRequest\x1a\x13.ident.TerminoReply\"\x00\x42\x1a\n\x05identB\nIdentProtoP\x01\xa2\x02\x02\x43Pb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'ident_pb2', globals())
@@ -37,6 +37,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TERMINOREQUEST._serialized_end=323
   _TERMINOREPLY._serialized_start=325
   _TERMINOREPLY._serialized_end=356
-  _IDENTIFICADOR._serialized_start=359
-  _IDENTIFICADOR._serialized_end=596
+  _IDENTIDADES._serialized_start=359
+  _IDENTIDADES._serialized_end=594
 # @@protoc_insertion_point(module_scope)

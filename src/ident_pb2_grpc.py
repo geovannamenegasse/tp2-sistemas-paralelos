@@ -5,8 +5,8 @@ import grpc
 import ident_pb2 as ident__pb2
 
 
-class IdentificadorStub(object):
-    """Servico para consulta de dados.
+class IdentidadesStub(object):
+    """Servico para autenticacao e controle de acesso
     """
 
     def __init__(self, channel):
@@ -16,61 +16,61 @@ class IdentificadorStub(object):
             channel: A grpc.Channel.
         """
         self.autenticacao = channel.unary_unary(
-                '/ident.Identificador/autenticacao',
+                '/ident.Identidades/autenticacao',
                 request_serializer=ident__pb2.AuthRequest.SerializeToString,
                 response_deserializer=ident__pb2.AuthReply.FromString,
                 )
         self.criacao = channel.unary_unary(
-                '/ident.Identificador/criacao',
+                '/ident.Identidades/criacao',
                 request_serializer=ident__pb2.CreateRequest.SerializeToString,
                 response_deserializer=ident__pb2.CreateReply.FromString,
                 )
         self.acesso = channel.unary_unary(
-                '/ident.Identificador/acesso',
+                '/ident.Identidades/acesso',
                 request_serializer=ident__pb2.AccessRequest.SerializeToString,
                 response_deserializer=ident__pb2.AccessReply.FromString,
                 )
         self.termino = channel.unary_unary(
-                '/ident.Identificador/termino',
+                '/ident.Identidades/termino',
                 request_serializer=ident__pb2.TerminoRequest.SerializeToString,
                 response_deserializer=ident__pb2.TerminoReply.FromString,
                 )
 
 
-class IdentificadorServicer(object):
-    """Servico para consulta de dados.
+class IdentidadesServicer(object):
+    """Servico para autenticacao e controle de acesso
     """
 
     def autenticacao(self, request, context):
-        """faz uma consulta nos servidores de armazenamento
+        """faz a autenticacao de um usuario no servidor de identidades
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def criacao(self, request, context):
-        """faz uma consulta nos servidores de armazenamento
+        """faz a insercao de um usuario no servidor de identidades
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def acesso(self, request, context):
-        """faz uma consulta nos servidores de armazenamento
+        """verifica as permissoes de um usuario no servidor de identidades
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def termino(self, request, context):
-        """termina a conexao com os servidores de armazenamento e termina o servidor que contêm este servico
+        """termina a conexao com os servidores de identidades
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_IdentificadorServicer_to_server(servicer, server):
+def add_IdentidadesServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'autenticacao': grpc.unary_unary_rpc_method_handler(
                     servicer.autenticacao,
@@ -94,13 +94,13 @@ def add_IdentificadorServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'ident.Identificador', rpc_method_handlers)
+            'ident.Identidades', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Identificador(object):
-    """Servico para consulta de dados.
+class Identidades(object):
+    """Servico para autenticacao e controle de acesso
     """
 
     @staticmethod
@@ -114,7 +114,7 @@ class Identificador(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/ident.Identificador/autenticacao',
+        return grpc.experimental.unary_unary(request, target, '/ident.Identidades/autenticacao',
             ident__pb2.AuthRequest.SerializeToString,
             ident__pb2.AuthReply.FromString,
             options, channel_credentials,
@@ -131,7 +131,7 @@ class Identificador(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/ident.Identificador/criacao',
+        return grpc.experimental.unary_unary(request, target, '/ident.Identidades/criacao',
             ident__pb2.CreateRequest.SerializeToString,
             ident__pb2.CreateReply.FromString,
             options, channel_credentials,
@@ -148,7 +148,7 @@ class Identificador(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/ident.Identificador/acesso',
+        return grpc.experimental.unary_unary(request, target, '/ident.Identidades/acesso',
             ident__pb2.AccessRequest.SerializeToString,
             ident__pb2.AccessReply.FromString,
             options, channel_credentials,
@@ -165,7 +165,7 @@ class Identificador(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/ident.Identificador/termino',
+        return grpc.experimental.unary_unary(request, target, '/ident.Identidades/termino',
             ident__pb2.TerminoRequest.SerializeToString,
             ident__pb2.TerminoReply.FromString,
             options, channel_credentials,

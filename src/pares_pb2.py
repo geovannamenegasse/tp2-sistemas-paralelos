@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bpares.proto\x12\x05pares\"<\n\rInsertRequest\x12\r\n\x05\x63have\x18\x02 \x01(\x05\x12\r\n\x05valor\x18\x01 \x01(\t\x12\r\n\x05vetor\x18\x03 \x03(\x0c\"\x1e\n\x0bInsertReply\x12\x0f\n\x07retorno\x18\x02 \x01(\x05\"-\n\rSearchRequest\x12\r\n\x05\x63have\x18\x02 \x01(\x05\x12\r\n\x05vetor\x18\x04 \x03(\x0c\"\x1c\n\x0bSearchReply\x12\r\n\x05valor\x18\x02 \x01(\t\"\x10\n\x0eTerminoRequest\"\x1f\n\x0cTerminoReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\x32\xb8\x01\n\rArmazenamento\x12\x36\n\x08insercao\x12\x14.pares.InsertRequest\x1a\x12.pares.InsertReply\"\x00\x12\x36\n\x08\x63onsulta\x12\x14.pares.SearchRequest\x1a\x12.pares.SearchReply\"\x00\x12\x37\n\x07termino\x12\x15.pares.TerminoRequest\x1a\x13.pares.TerminoReply\"\x00\x42\x1a\n\x05paresB\nParesProtoP\x01\xa2\x02\x02\x43Pb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bpares.proto\x12\x05pares\"<\n\rInsertRequest\x12\r\n\x05\x63have\x18\x01 \x01(\x05\x12\r\n\x05valor\x18\x02 \x01(\t\x12\r\n\x05vetor\x18\x03 \x03(\x0c\"\x1e\n\x0bInsertReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\"-\n\rSearchRequest\x12\r\n\x05\x63have\x18\x01 \x01(\x05\x12\r\n\x05vetor\x18\x02 \x03(\x0c\"\x1c\n\x0bSearchReply\x12\r\n\x05valor\x18\x01 \x01(\t\"\x10\n\x0eTerminoRequest\"\x1f\n\x0cTerminoReply\x12\x0f\n\x07retorno\x18\x01 \x01(\x05\x32\xb0\x01\n\x05Pares\x12\x36\n\x08insercao\x12\x14.pares.InsertRequest\x1a\x12.pares.InsertReply\"\x00\x12\x36\n\x08\x63onsulta\x12\x14.pares.SearchRequest\x1a\x12.pares.SearchReply\"\x00\x12\x37\n\x07termino\x12\x15.pares.TerminoRequest\x1a\x13.pares.TerminoReply\"\x00\x42\x1a\n\x05paresB\nParesProtoP\x01\xa2\x02\x02\x43Pb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'pares_pb2', globals())
@@ -33,6 +33,6 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _TERMINOREQUEST._serialized_end=209
   _TERMINOREPLY._serialized_start=211
   _TERMINOREPLY._serialized_end=242
-  _ARMAZENAMENTO._serialized_start=245
-  _ARMAZENAMENTO._serialized_end=429
+  _PARES._serialized_start=245
+  _PARES._serialized_end=421
 # @@protoc_insertion_point(module_scope)
