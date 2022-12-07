@@ -19,7 +19,6 @@ class Ident(ident_pb2_grpc.IdentidadesServicer):
     itens = {'super' : ([secrets.token_bytes(32)], int(sys.argv[2]), "SP")} 
 
     def autenticacao(self, request, context): # procedimento de autenticacao
-        print(request)
 
         # se o usuario nao existe ou a senha esta errada, retorne -1 e um vetor de zeros
         if request.identificacao not in self.itens.keys() or self.itens[request.identificacao][1] != request.senha:
@@ -36,7 +35,6 @@ class Ident(ident_pb2_grpc.IdentidadesServicer):
         return ident_pb2.AuthReply(retorno=retorno, vetor=vetor)
 
     def criacao(self, request, context): # procedimento de insercao de usuario
-        print(request)
 
         # se o vetor da ultima autenticacao for diferente do vetor do super, retorne -1
         if request.vetor != self.itens['super'][0]:
@@ -50,7 +48,6 @@ class Ident(ident_pb2_grpc.IdentidadesServicer):
         return ident_pb2.CreateReply(retorno=retorno)
 
     def acesso(self, request, context): # procedimento de verificacao de acesso
-        print(request)
         
         # para todos os usuarios no dicionario, se o vetor for igual ao vetor informado, retorne a permissao do usuario
         for value in self.itens.values():
